@@ -12,12 +12,14 @@ For the `get-wise-quote` command, there is an optional configuration for the def
 
 ## Screenshots
 
-<img width="1000" alt="wise-quotes-1" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/assets/22970186/a1039c4e-4460-472d-bd1d-198b55b5c006">
+<img width="1000" alt="wise-quotes-1" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-1.png?raw=true">
 
-<img width="1000" alt="wise-quotes-2" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/assets/22970186/bf3a5a0b-95ee-4683-abd9-317fb2a804c9">
+<img width="1000" alt="wise-quotes-2" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-2.png?raw=true">
 
-<img width="1000" alt="wise-quotes-3" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/assets/22970186/f6493a25-8868-4daa-b8c8-94694b5ec2fc">
+<img width="1000" alt="wise-quotes-3" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-3.png?raw=true">
 
-<img width="1000" alt="wise-quotes-4" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/assets/22970186/bf290b35-9718-4b60-8ec2-8b3aaee34428">
+<img width="1000" alt="wise-quotes-4" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-4.png?raw=true">
 
-<img width="856" alt="wise-quotes-menu-bar" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/assets/22970186/10c460e2-0606-46e0-9a09-31b4ad28f94c">
+<img width="1000" alt="wise-quotes-5" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-5.png?raw=true">
+
+<img width="1000" alt="wise-quotes-6" src="https://github.com/HugoLiconV/wise-quotes-raycast-extension/blob/main/metadata/wise-quotes-6.png?raw=true">
