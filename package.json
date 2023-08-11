@@ -1,0 +1,69 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "wise-quotes",
+  "title": "Wise Quotes",
+  "description": "Effortlessly calculate international money transfers between USD and any target currency using the Wise API. Instantly generate quotes, access exchange rates, and estimate delivery times. Make informed financial decisions directly from your Raycast workspace.",
+  "icon": "command-icon.png",
+  "author": "hugoliconv",
+  "categories": [
+    "Finance"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "get-current-rate",
+      "title": "Get current rate",
+      "description": "Get the current quotes and exchange rate between USD and a target currency",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "amount",
+          "placeholder": "1.00",
+          "type": "text"
+        },
+        {
+          "name": "targetCurrency",
+          "placeholder": "MXN",
+          "type": "text"
+        }
+      ],
+      "preferences": [
+        {
+          "name": "defaultAmount",
+          "title": "Default amount",
+          "description": "The default amount to convert",
+          "type": "textfield",
+          "defaultValue": "1.00",
+          "required": false
+        },
+        {
+          "name": "defaultTargetCurrency",
+          "title": "Default target currency",
+          "description": "The default target currency to convert to",
+          "type": "textfield",
+          "defaultValue": "MXN",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.57.0",
+    "@raycast/utils": "^1.9.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "1.0.5",
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "eslint": "^7.32.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
