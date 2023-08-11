@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "wise-quotes",
   "title": "Wise Quotes",
-  "description": "Effortlessly calculate international money transfers between USD and any target currency using the Wise API. Instantly generate quotes, access exchange rates, and estimate delivery times. Make informed financial decisions directly from your Raycast workspace.",
+  "description": "Effortlessly calculate international money transfers between USD and any target currency using the Wise API. Instantly generate quotes, access exchange rates, and estimated delivery times. Make informed financial decisions directly from your Raycast workspace.",
   "icon": "command-icon.png",
   "author": "hugoliconv",
   "categories": [
