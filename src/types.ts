@@ -84,3 +84,8 @@ export interface Response {
   providedAmountType: string;
   funding: string;
 }
+
+export interface Preferences {
+  defaultAmount: string;
+  defaultTargetCurrency: string;
+}

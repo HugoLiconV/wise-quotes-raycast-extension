@@ -4,15 +4,11 @@ import { Detail } from "@raycast/api";
 import { useWiseQuoteQuery } from "./hooks";
 import { formatCurrency } from "./utils";
 import { FeeBreakdown } from "./components";
+import { Preferences } from "./types";
 
 interface Arguments {
   amount?: string;
   targetCurrency?: string;
-}
-
-interface Preferences {
-  defaultAmount: string;
-  defaultTargetCurrency: string;
 }
 
 export default function Command(props: LaunchProps<{ arguments: Arguments }>) {

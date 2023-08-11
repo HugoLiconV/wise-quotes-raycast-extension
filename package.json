@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "wise-quotes",
   "title": "Wise Quotes",
-  "description": "Effortlessly calculate international money transfers between USD and any target currency using the Wise API. Instantly generate quotes, access exchange rates, and estimated delivery times. Make informed financial decisions directly from your Raycast workspace.",
+  "description": "Effortlessly calculate international money transfers between USD and any target currency using the Wise API. Instantly generate quotes, access exchange rates, and estimated delivery times.",
   "icon": "command-icon.png",
   "author": "hugoliconv",
   "categories": [
@@ -11,19 +11,26 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "get-current-rate",
-      "title": "Get current rate",
+      "name": "get-wise-quote",
+      "title": "Get Wise Quote",
       "description": "Get the current quotes and exchange rate between USD and a target currency",
       "mode": "view",
+      "keywords": [
+        "wise",
+        "currency",
+        "exchange",
+        "rate",
+        "quote"
+      ],
       "arguments": [
         {
           "name": "amount",
-          "placeholder": "1.00",
+          "placeholder": "1.00 USD",
           "type": "text"
         },
         {
           "name": "targetCurrency",
-          "placeholder": "MXN",
+          "placeholder": "To MXN",
           "type": "text"
         }
       ],
@@ -35,16 +42,32 @@
           "type": "textfield",
           "defaultValue": "1.00",
           "required": false
-        },
-        {
-          "name": "defaultTargetCurrency",
-          "title": "Default target currency",
-          "description": "The default target currency to convert to",
-          "type": "textfield",
-          "defaultValue": "MXN",
-          "required": true
         }
       ]
+    },
+    {
+      "name": "current-rate",
+      "title": "Current Rate",
+      "mode": "menu-bar",
+      "description": "See the current exchange rate between USD and your target currency",
+      "keywords": [
+        "wise",
+        "currency",
+        "exchange",
+        "rate",
+        "quote"
+      ],
+      "interval": "30m"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "defaultTargetCurrency",
+      "title": "Default target currency",
+      "description": "The default target currency to convert to",
+      "type": "textfield",
+      "defaultValue": "MXN",
+      "required": true
     }
   ],
   "dependencies": {
