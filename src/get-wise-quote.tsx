@@ -1,4 +1,14 @@
-import { Action, ActionPanel, LaunchProps, getPreferenceValues, openExtensionPreferences } from "@raycast/api";
+import {
+  Action,
+  ActionPanel,
+  Icon,
+  LaunchProps,
+  Toast,
+  getPreferenceValues,
+  openExtensionPreferences,
+  openCommandPreferences,
+  showToast,
+} from "@raycast/api";
 
 import { Detail } from "@raycast/api";
 import { useWiseQuoteQuery } from "./hooks";
@@ -34,7 +44,7 @@ export default function Command(props: LaunchProps<{ arguments: Arguments }>) {
 
   const sourceAmount = getSourceAmount();
   const targetCurrency = getTargetCurrency();
-  const { isLoading, data, error } = useWiseQuoteQuery({
+  const { isLoading, data, error, revalidate, mutate } = useWiseQuoteQuery({
     sourceAmount,
     targetCurrency,
   });
@@ -71,6 +81,16 @@ Recepient gets **${formatCurrency(
 ${data.rate}
   `;
 
+  async function refetch() {
+    const toast = await showToast({
+      style: Toast.Style.Animated,
+      title: "Refreshing...",
+    });
+    await mutate();
+    toast.style = Toast.Style.Success;
+    toast.title = "Data refreshed";
+  }
+
   return (
     <Detail
       isLoading={isLoading}
@@ -79,10 +99,31 @@ ${data.rate}
         <ActionPanel title="Actions">
           <Action.OpenInBrowser title="Start Transfer in Browser" url="https://wise.com/send#/enterpayment" />
           <Action.CopyToClipboard
-            title="Copy Amount to Clipboard"
+            title="Copy Target Amount to Clipboard"
             content={`${preferredPaymentOption?.targetAmount}`}
           />
-          <Action title="Set Default Amount and Target Currency" onAction={openExtensionPreferences} />
+          <Action
+            title="Refresh"
+            icon={{ source: Icon.RotateClockwise }}
+            onAction={refetch}
+            shortcut={{ modifiers: ["cmd"], key: "r" }}
+          />
+          <Action
+            title="Set Default Source Amount"
+            icon={{
+              source: Icon.Coins,
+            }}
+            shortcut={{ modifiers: ["cmd"], key: "s" }}
+            onAction={openCommandPreferences}
+          />
+          <Action
+            title="Set Default Target Currency"
+            icon={{
+              source: Icon.Globe,
+            }}
+            shortcut={{ modifiers: ["cmd"], key: "c" }}
+            onAction={openExtensionPreferences}
+          />
         </ActionPanel>
       }
       metadata={<FeeBreakdown paymentOption={preferredPaymentOption} rate={data.rate} />}

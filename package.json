@@ -47,7 +47,7 @@
     },
     {
       "name": "current-rate",
-      "title": "Current Rate",
+      "title": "Show Current Rate",
       "mode": "menu-bar",
       "description": "See the current exchange rate between USD and your target currency",
       "keywords": [
