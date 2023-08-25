@@ -44,7 +44,7 @@ export default function Command(props: LaunchProps<{ arguments: Arguments }>) {
 
   const sourceAmount = getSourceAmount();
   const targetCurrency = getTargetCurrency();
-  const { isLoading, data, error, revalidate, mutate } = useWiseQuoteQuery({
+  const { isLoading, data, error, mutate } = useWiseQuoteQuery({
     sourceAmount,
     targetCurrency,
   });
@@ -58,27 +58,64 @@ Please check:
 - If the currency "${targetCurrency}" is correct and supported by Wise
 - If the amount "${sourceAmount}" is correct
 `;
-    return <Detail isLoading={false} navigationTitle="Error" markdown={errorMarkdown} />;
+    return (
+      <Detail
+        isLoading={false}
+        navigationTitle={`Error: ${error.message}`}
+        markdown={errorMarkdown}
+        actions={
+          <ActionPanel title="Actions">
+            <Action
+              title="Set Default Source Amount"
+              icon={{
+                source: Icon.Coins,
+              }}
+              shortcut={{ modifiers: ["cmd"], key: "s" }}
+              onAction={openCommandPreferences}
+            />
+            <Action
+              title="Set Default Target Currency"
+              icon={{
+                source: Icon.Globe,
+              }}
+              shortcut={{ modifiers: ["cmd"], key: "c" }}
+              onAction={openExtensionPreferences}
+            />
+          </ActionPanel>
+        }
+      />
+    );
   }
-
-  const availablePaymentOptions = data?.paymentOptions.filter((option) => !option.disabled);
-  const preferredPaymentOption = availablePaymentOptions?.[0];
 
   if (!data) {
     return <Detail isLoading={true} />;
   }
+
+  const availablePaymentOptions = data?.paymentOptions.filter((option) => !option.disabled);
+  const preferredPaymentOption = availablePaymentOptions?.[0];
+  const paymentOption = data?.paymentOptions?.[0];
+  const disabledReason = paymentOption?.disabledReason;
+
+  const noPaymentOptionAvailableMarkdown = `
+****
+**⚠️ Warning: No payment option available**
+
+${disabledReason?.message ?? "Try with another parameters"}
+****
+`;
 
   const markdown = `
 # Wise Transfer
 You send exaclty **${formatCurrency(data.sourceAmount, data.sourceCurrency)}**
 
 Recepient gets **${formatCurrency(
-    preferredPaymentOption?.targetAmount ?? 0,
-    preferredPaymentOption?.targetCurrency ?? ""
+    preferredPaymentOption?.targetAmount ?? paymentOption?.targetAmount ?? 0,
+    preferredPaymentOption?.targetCurrency ?? paymentOption?.targetCurrency ?? ""
   )}**
 
 ## Rate  
 ${data.rate}
+${!preferredPaymentOption ? noPaymentOptionAvailableMarkdown : ""}
   `;
 
   async function refetch() {
